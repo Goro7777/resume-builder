@@ -1,4 +1,6 @@
-export default function Resume({ targetRef }) {
+import ResumeHeader from "./ResumeHeader";
+
+export default function Resume({ targetRef, isEditable }) {
     return (
         <div className="p-5 mt-5">
             <div className="border border-2">
@@ -7,19 +9,7 @@ export default function Resume({ targetRef }) {
                         className="container aos-init aos-animate"
                         data-aos="fade-up"
                     >
-                        <div className="section-title w-50 mx-auto">
-                            <h2 className="text-center">Alice Barkley</h2>
-                            <p>
-                                <em>
-                                    Innovative and deadline-driven Graphic
-                                    Designer with 3+ years of experience
-                                    designing and developing user-centered
-                                    digital/print marketing material from
-                                    initial concept to final, polished
-                                    deliverable.
-                                </em>
-                            </p>
-                        </div>
+                        <ResumeHeader isEditable={isEditable} />
 
                         <div className="row">
                             <div className="col-lg-6">

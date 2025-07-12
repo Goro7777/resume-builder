@@ -15,7 +15,11 @@ function App() {
                 onToggleEdit={() => setIsEditing(!isEditing)}
                 isEditing={isEditing}
             />
-            <Resume targetRef={targetRef} isEditing={isEditing} />
+            <Resume
+                targetRef={targetRef}
+                isEditing={isEditing}
+                isEditable={isEditing}
+            />
         </>
     );
 }
