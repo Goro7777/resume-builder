@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { DEFAULT_NAME, DEFAULT_DESCRIPTION } from "../constants";
+import EditableTitle from "./EditableTitle";
+import EditablePar from "./EditablePar";
 
 export default function ResumeHeader({ isEditable }) {
     const [isEditing, setIsEditing] = useState(false);
@@ -10,33 +12,6 @@ export default function ResumeHeader({ isEditable }) {
         setIsEditing(false);
         return null;
     }
-
-    let contents = (
-        <>
-            <h2 className="text-center">{name}</h2>
-            <p>{description}</p>
-        </>
-    );
-    if (isEditing)
-        contents = (
-            <>
-                <h2 className="text-center">
-                    <input
-                        className="w-80 p-0 border-0 text-center"
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                    />{" "}
-                </h2>
-                <p>
-                    <textarea
-                        className="w-100 border-0 p-0 m-0"
-                        value={description}
-                        rows={3}
-                        onChange={(e) => setDescription(e.target.value)}
-                    ></textarea>
-                </p>
-            </>
-        );
 
     return (
         <div
@@ -55,7 +30,19 @@ export default function ResumeHeader({ isEditable }) {
                     }
                 ></a>
             )}
-            {contents}
+            <>
+                <EditableTitle
+                    classes="h2 text-center"
+                    isEditing={isEditing}
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                />
+                <EditablePar
+                    isEditing={isEditing}
+                    value={description}
+                    onChange={(e) => setDescription(e.target.value)}
+                />
+            </>
         </div>
     );
 }
