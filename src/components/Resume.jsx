@@ -1,9 +1,6 @@
-import { usePDF } from "react-to-pdf";
-
-export default function Resume() {
-    const { toPDF, targetRef } = usePDF({ filename: "page.pdf" });
+export default function Resume({ targetRef }) {
     return (
-        <div className="p-5">
+        <div className="p-5 mt-5">
             <section
                 ref={targetRef}
                 id="resume"
@@ -160,7 +157,7 @@ export default function Resume() {
                 </div>
             </section>
 
-            <button onClick={() => toPDF()}>Download PDF</button>
+            {/* <button onClick={() => toPDF()}>Download PDF</button> */}
         </div>
     );
 }

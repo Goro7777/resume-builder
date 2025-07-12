@@ -1,13 +1,16 @@
+import { usePDF } from "react-to-pdf";
+import Resume from "./components/Resume";
+import Header from "./components/Header";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-import Resume from "./components/Resume";
-
 function App() {
+    const { toPDF, targetRef } = usePDF({ filename: "page.pdf" });
+
     return (
         <>
-            <h1>Resume builder</h1>
-            <Resume />
+            <Header onDownload={toPDF} />
+            <Resume targetRef={targetRef} />
         </>
     );
 }
