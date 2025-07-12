@@ -1,14 +1,23 @@
-export default function Header({ onDownload }) {
+export default function Header({ onDownload, isEditing, onToggleEdit }) {
     return (
-        <nav class="navbar navbar-dark bg-dark fixed-top">
-            <div class="container-fluid px-5">
-                <a class="navbar-brand">Resume Builder</a>
+        <nav className="navbar navbar-dark bg-dark fixed-top">
+            <div className="container-fluid px-5">
+                <a className="navbar-brand">Resume Builder</a>
+
+                <button className="btn btn-info outline" onClick={onToggleEdit}>
+                    {isEditing ? (
+                        <i className="bi bi-save"> Save</i>
+                    ) : (
+                        <i className="bi bi-pen"> Edit</i>
+                    )}
+                </button>
+
                 <button
-                    class="btn btn-warning"
-                    type="submit"
+                    className="btn btn-warning"
                     onClick={onDownload}
+                    disabled={isEditing}
                 >
-                    Download PDF
+                    <i className="bi bi-download"></i> Download PDF
                 </button>
             </div>
         </nav>
