@@ -3,10 +3,17 @@ import { usePDF } from "react-to-pdf";
 export default function Resume() {
     const { toPDF, targetRef } = usePDF({ filename: "page.pdf" });
     return (
-        <div>
-            <section ref={targetRef} id="resume" class="resume">
-                <div class="container aos-init aos-animate" data-aos="fade-up">
-                    <div class="section-title">
+        <div className="p-5">
+            <section
+                ref={targetRef}
+                id="resume"
+                className="resume border border-5 p-5"
+            >
+                <div
+                    className="container aos-init aos-animate"
+                    data-aos="fade-up"
+                >
+                    <div className="section-title">
                         <h2>Resume</h2>
                         <p>
                             Magnam dolores commodi suscipit. Necessitatibus eius
@@ -18,10 +25,10 @@ export default function Resume() {
                         </p>
                     </div>
 
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <h3 class="resume-title">Sumary</h3>
-                            <div class="resume-item pb-0">
+                    <div className="row">
+                        <div className="col-lg-6">
+                            <h3 className="resume-title">Sumary</h3>
+                            <div className="resume-item pb-0">
                                 <h4>Alice Barkley</h4>
                                 <p>
                                     <em>
@@ -42,8 +49,8 @@ export default function Resume() {
                                 <p></p>
                             </div>
 
-                            <h3 class="resume-title">Education</h3>
-                            <div class="resume-item">
+                            <h3 className="resume-title">Education</h3>
+                            <div className="resume-item">
                                 <h4>
                                     Master of Fine Arts &amp; Graphic Design
                                 </h4>
@@ -61,7 +68,7 @@ export default function Resume() {
                                     nerada porti sand markend
                                 </p>
                             </div>
-                            <div class="resume-item">
+                            <div className="resume-item">
                                 <h4>
                                     Bachelor of Fine Arts &amp; Graphic Design
                                 </h4>
@@ -82,11 +89,11 @@ export default function Resume() {
                                 </p>
                             </div>
                         </div>
-                        <div class="col-lg-6">
-                            <h3 class="resume-title">
+                        <div className="col-lg-6">
+                            <h3 className="resume-title">
                                 Professional Experience
                             </h3>
-                            <div class="resume-item">
+                            <div className="resume-item">
                                 <h4>Senior graphic design specialist</h4>
                                 <h5>2019 - Present</h5>
                                 <p>
@@ -117,7 +124,7 @@ export default function Resume() {
                                 </ul>
                                 <p></p>
                             </div>
-                            <div class="resume-item">
+                            <div className="resume-item">
                                 <h4>Graphic design specialist</h4>
                                 <h5>2017 - 2018</h5>
                                 <p>
