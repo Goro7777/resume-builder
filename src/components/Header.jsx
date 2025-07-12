@@ -6,9 +6,9 @@ export default function Header({ onDownload, isEditing, onToggleEdit }) {
 
                 <button className="btn btn-info outline" onClick={onToggleEdit}>
                     {isEditing ? (
-                        <i className="bi bi-save"> Save</i>
+                        <i className="bi bi-check2-square"> Save</i>
                     ) : (
-                        <i className="bi bi-pen"> Edit</i>
+                        <i className="bi bi-pencil-square"> Edit</i>
                     )}
                 </button>
 

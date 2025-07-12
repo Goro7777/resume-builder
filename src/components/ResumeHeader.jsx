@@ -25,8 +25,8 @@ export default function ResumeHeader({ isEditable }) {
                     href="#"
                     onClick={() => setIsEditing(!isEditing)}
                     className={
-                        "position-absolute end-0 bi bi-" +
-                        (isEditing ? "save" : "pen")
+                        "position-absolute fs-5 end-0 bi bi-" +
+                        (isEditing ? "check2-square" : "pencil-square")
                     }
                 ></a>
             )}
