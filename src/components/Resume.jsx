@@ -10,33 +10,24 @@ export default function Resume({ targetRef }) {
                     className="container aos-init aos-animate"
                     data-aos="fade-up"
                 >
-                    <div className="section-title">
-                        <h2>Resume</h2>
+                    <div className="section-title  w-50 mx-auto">
+                        <h2 className="text-center">Alice Barkley</h2>
                         <p>
-                            Magnam dolores commodi suscipit. Necessitatibus eius
-                            consequatur ex aliquid fuga eum quidem. Sit sint
-                            consectetur velit. Quisquam quos quisquam
-                            cupiditate. Et nemo qui impedit suscipit alias ea.
-                            Quia fugiat sit in iste officiis commodi quidem hic
-                            quas.
+                            <em>
+                                Innovative and deadline-driven Graphic Designer
+                                with 3+ years of experience designing and
+                                developing user-centered digital/print marketing
+                                material from initial concept to final, polished
+                                deliverable.
+                            </em>
                         </p>
                     </div>
 
                     <div className="row">
                         <div className="col-lg-6">
-                            <h3 className="resume-title">Sumary</h3>
+                            <h3 className="resume-title">Contacts</h3>
                             <div className="resume-item pb-0">
-                                <h4>Alice Barkley</h4>
-                                <p>
-                                    <em>
-                                        Innovative and deadline-driven Graphic
-                                        Designer with 3+ years of experience
-                                        designing and developing user-centered
-                                        digital/print marketing material from
-                                        initial concept to final, polished
-                                        deliverable.
-                                    </em>
-                                </p>
+                                <p></p>
                                 <p></p>
                                 <ul>
                                     <li>Portland par 127,Orlando, FL</li>
