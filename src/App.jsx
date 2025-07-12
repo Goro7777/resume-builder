@@ -1,4 +1,6 @@
 import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+
 import Resume from "./components/Resume";
 
 function App() {
