@@ -1,15 +1,17 @@
-export default function EditableTitle({ classes, isEditing, value, onChange }) {
+export default function EditableTitle({ isEditing, value, onChange }) {
     return (
-        <p className={classes}>
+        <div>
             {isEditing ? (
                 <input
-                    className={"w-80 p-0 border-0 m-0 " + classes}
+                    className="w-100 p-1 border-1 h2 text-center"
                     value={value}
                     onChange={onChange}
                 />
             ) : (
-                value
+                <div className="p-1 border border-1 border-white h2 text-center">
+                    {value}
+                </div>
             )}
-        </p>
+        </div>
     );
 }

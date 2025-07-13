@@ -1,16 +1,16 @@
 export default function EditablePar({ isEditing, value, onChange }) {
     return (
-        <p>
+        <div>
             {isEditing ? (
                 <textarea
-                    className="w-100 border-0 p-0 m-0"
+                    className="align-top w-100 p-1 border-1"
                     value={value}
                     rows={3}
                     onChange={onChange}
                 ></textarea>
             ) : (
-                value
+                <div className="p-1 border border-1 border-white">{value}</div>
             )}
-        </p>
+        </div>
     );
 }

@@ -32,7 +32,6 @@ export default function ResumeHeader({ isEditable }) {
             )}
             <>
                 <EditableTitle
-                    classes="h2 text-center"
                     isEditing={isEditing}
                     value={name}
                     onChange={(e) => setName(e.target.value)}
