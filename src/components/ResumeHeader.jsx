@@ -5,8 +5,6 @@ import EditablePar from "./EditablePar";
 
 export default function ResumeHeader({ isEditable }) {
     const [isEditing, setIsEditing] = useState(false);
-    const [name, setName] = useState(DEFAULT_NAME);
-    const [description, setDescription] = useState(DEFAULT_DESCRIPTION);
 
     if (!isEditable && isEditing) {
         setIsEditing(false);
@@ -33,13 +31,11 @@ export default function ResumeHeader({ isEditable }) {
             <>
                 <EditableTitle
                     isEditing={isEditing}
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
+                    initialValue={DEFAULT_NAME}
                 />
                 <EditablePar
                     isEditing={isEditing}
-                    value={description}
-                    onChange={(e) => setDescription(e.target.value)}
+                    initialValue={DEFAULT_DESCRIPTION}
                 />
             </>
         </div>
