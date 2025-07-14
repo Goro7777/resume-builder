@@ -75,6 +75,7 @@ body {
 .resume .resume-section input,
 .resume .resume-section textarea {
     border: inset;
+    field-sizing: content;
 }
 
 .resume .resume-section input:focus,

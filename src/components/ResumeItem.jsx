@@ -60,7 +60,7 @@ export default function ResumeItem({ id, isEditing, initialParts }) {
                         <ul>
                             {infoItem.map((point) => (
                                 <li key={point}>
-                                    <EditableTitle
+                                    <EditablePar
                                         initialValue={point}
                                         isEditing={isEditing}
                                     />

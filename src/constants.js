@@ -34,9 +34,7 @@ export const DEFAULT_PERSON = {
     items: {
         0: {
             id: 0,
-            title: "",
-            time: "",
-            place: "",
+
             info: [
                 [
                     "Portland par 127,Orlando, FL",

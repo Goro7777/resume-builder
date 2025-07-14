@@ -9,7 +9,6 @@ export default function EditablePar({ isEditing, initialValue }) {
                 <textarea
                     className="align-top w-100 p-1 border-1"
                     value={text}
-                    rows={3}
                     onChange={(e) => setText(e.target.value)}
                 ></textarea>
             ) : (
