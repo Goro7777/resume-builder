@@ -55,14 +55,14 @@ export default function ResumeItem({ id, isEditing }) {
                     </h5>
                 )}
                 {item.place && (
-                    <p>
+                    <div>
                         <em>
                             <EditableTitle
                                 isEditing={isEditing}
                                 initialValue={item.place}
                             />
                         </em>
-                    </p>
+                    </div>
                 )}
             </header>
             {item.info.map((infoItem) => {
