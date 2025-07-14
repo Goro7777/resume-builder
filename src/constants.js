@@ -15,6 +15,11 @@ export const GET_DEFAULT_SECTION_IDS = () => {
 export const GET_DEFAULT_ITEM_IDS = (sectionId) => {
     return DEFAULT_PERSON.sections[sectionId]?.itemIds;
 };
+
+export const GET_DEFAULT_ITEMS = () => {
+    return DEFAULT_PERSON.items;
+};
+
 export const DEFAULT_NEW_ITEM = {
     title: "Title",
     time: "Year 1 - Year 2",

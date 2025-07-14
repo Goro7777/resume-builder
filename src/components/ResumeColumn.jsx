@@ -8,7 +8,6 @@ export default function ResumeColumn({ initialSectionIds, isEditable }) {
     return (
         <div className="col-lg-6">
             {sectionIds.map((sectionId) => {
-                console.log("sectionId: " + sectionId);
                 let initialItemIds = GET_DEFAULT_ITEM_IDS(sectionId);
                 return (
                     <ResumeSection

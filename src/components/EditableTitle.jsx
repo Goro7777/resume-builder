@@ -3,7 +3,7 @@ import { useState } from "react";
 export default function EditableTitle({
     isEditing,
     initialValue,
-    textClasses,
+    textClasses = "",
 }) {
     const [title, setTitle] = useState(initialValue);
 

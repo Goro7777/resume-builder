@@ -2,6 +2,8 @@ import ResumeHeader from "./ResumeHeader";
 import { GET_DEFAULT_SECTION_IDS } from "../constants";
 import ResumeColumn from "./ResumeColumn";
 
+// https://www.bootdey.com/snippets/view/cv-resume
+
 // Resume
 //  Column
 //   Section - Contacts, Education, Prof Experience
@@ -26,7 +28,7 @@ export default function Resume({ targetRef, isEditable }) {
                                 isEditable={isEditable}
                             />
                             {/* Left column */}
-                            {/* <div className="col-lg-6">
+                            <div className="col-lg-6">
                                 {isEditable && (
                                     <button
                                         type="button"
@@ -112,19 +114,10 @@ export default function Resume({ targetRef, isEditable }) {
                                         Section Here
                                     </button>
                                 )}
-                            </div> */}
+                            </div>
 
                             {/* Right column */}
-                            <div className="col-lg-6">
-                                {isEditable && (
-                                    <button
-                                        type="button"
-                                        className="btn btn-sm btn-info w-100"
-                                    >
-                                        <i className="bi bi-plus"></i> Add
-                                        Section Here
-                                    </button>
-                                )}
+                            {/* <div className="col-lg-6">
                                 <section>
                                     <h3 className="resume-title">
                                         Professional Experience
@@ -207,7 +200,7 @@ export default function Resume({ targetRef, isEditable }) {
                                         Section Here
                                     </button>
                                 )}
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                 </section>

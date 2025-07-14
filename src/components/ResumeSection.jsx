@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { DEFAULT_PERSON } from "../constants";
+import { DEFAULT_PERSON, DEFAULT_NEW_ITEM } from "../constants";
 import EditableTitle from "./EditableTitle";
+import ResumeItem from "./ResumeItem";
 
 export default function ResumeSection({ id, initialItemIds, isEditable }) {
     const [isEditing, setIsEditing] = useState(false);
@@ -19,14 +20,20 @@ export default function ResumeSection({ id, initialItemIds, isEditable }) {
                     initialValue={DEFAULT_PERSON.sections[id]?.name || "Title"}
                 />
             </h3>
-            <div className="resume-item pb-0">
-                {itemIds.map((itemId) => (
-                    <h4>{itemId}</h4>
-                ))}
-                {/* <button type="button" className="btn btn-sm btn-info w-100">
+            {itemIds.map((id) => (
+                <ResumeItem
+                    id={id}
+                    isEditing={isEditing}
+                    initialParts={
+                        DEFAULT_PERSON.items[id]
+                            ? DEFAULT_PERSON.items[id]
+                            : DEFAULT_NEW_ITEM
+                    }
+                />
+            ))}
+            {/* <button type="button" className="btn btn-sm btn-info w-100">
                     <i className="bi bi-plus"></i> Add Item
                 </button> */}
-            </div>
         </section>
     );
 
