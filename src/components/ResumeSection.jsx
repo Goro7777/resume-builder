@@ -2,6 +2,7 @@ import { useState } from "react";
 import { DEFAULT_PERSON, DEFAULT_NEW_ITEM } from "../constants";
 import EditableTitle from "./EditableTitle";
 import ResumeItem from "./ResumeItem";
+import EditButton from "./EditButton";
 
 export default function ResumeSection({ id, initialItemIds, isEditable }) {
     const [isEditing, setIsEditing] = useState(false);
@@ -13,7 +14,12 @@ export default function ResumeSection({ id, initialItemIds, isEditable }) {
     }
 
     return (
-        <section>
+        <section className="resume-section position-relative">
+            <EditButton
+                isEditable={isEditable}
+                isEditing={isEditing}
+                onClick={() => setIsEditing(!isEditing)}
+            />
             <h3 className="resume-title">
                 <EditableTitle
                     isEditing={isEditing}

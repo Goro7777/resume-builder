@@ -72,13 +72,13 @@ body {
     outline: 2px inset rgb(13, 202, 240);
 }
 
-.resume .resume-section.highlighted input,
-.resume .resume-section.highlighted textarea {
+.resume .resume-section input,
+.resume .resume-section textarea {
     border: inset;
 }
 
-.resume .resume-section.highlighted input:focus,
-.resume .resume-section.highlighted textarea:focus {
+.resume .resume-section input:focus,
+.resume .resume-section textarea:focus {
     outline: none;
     border-color: rgb(13, 202, 240);
 }

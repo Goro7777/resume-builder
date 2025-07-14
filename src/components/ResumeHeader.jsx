@@ -2,6 +2,7 @@ import { useState } from "react";
 import { DEFAULT_NAME, DEFAULT_DESCRIPTION } from "../constants";
 import EditableTitle from "./EditableTitle";
 import EditablePar from "./EditablePar";
+import EditButton from "./EditButton";
 
 export default function ResumeHeader({ isEditable }) {
     const [isEditing, setIsEditing] = useState(false);
@@ -18,16 +19,11 @@ export default function ResumeHeader({ isEditable }) {
                 (isEditing ? " highlighted" : "")
             }
         >
-            {isEditable && (
-                <a
-                    href="#"
-                    onClick={() => setIsEditing(!isEditing)}
-                    className={
-                        "position-absolute fs-5 end-0 bi bi-" +
-                        (isEditing ? "check2-square" : "pencil-square")
-                    }
-                ></a>
-            )}
+            <EditButton
+                isEditable={isEditable}
+                isEditing={isEditing}
+                onClick={() => setIsEditing(!isEditing)}
+            />
             <>
                 <EditableTitle
                     textClasses="h2 text-center"
