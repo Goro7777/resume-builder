@@ -33,7 +33,7 @@ body {
 .resume .resume-item header h5 {
     font-size: 16px;
     background: #effbf9;
-    padding-inline: 15px;
+    /* padding-inline: 15px; */
     display: inline-block;
     font-weight: 600;
     margin-bottom: 6px;

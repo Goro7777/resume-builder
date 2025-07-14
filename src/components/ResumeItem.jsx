@@ -40,6 +40,7 @@ export default function ResumeItem({ id, isEditing, initialParts }) {
                         <EditableTitle
                             isEditing={isEditing}
                             initialValue={parts.time}
+                            classes="px-4"
                         />
                     </h5>
                 )}

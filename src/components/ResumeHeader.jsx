@@ -26,7 +26,7 @@ export default function ResumeHeader({ isEditable }) {
             />
             <>
                 <EditableTitle
-                    textClasses="h2 text-center"
+                    classes="h2 text-center"
                     isEditing={isEditing}
                     initialValue={DEFAULT_NAME}
                 />

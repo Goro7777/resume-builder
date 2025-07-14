@@ -3,7 +3,7 @@ import { useState } from "react";
 export default function EditableTitle({
     isEditing,
     initialValue,
-    textClasses = "",
+    classes = "",
 }) {
     const [title, setTitle] = useState(initialValue);
 
@@ -11,16 +11,12 @@ export default function EditableTitle({
         <div>
             {isEditing ? (
                 <input
-                    className={"w-100 p-1 border-1 " + textClasses}
+                    className={"w-100 p-1 border-1 " + classes}
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
                 />
             ) : (
-                <div
-                    className={
-                        "p-1 border border-1 border-white " + textClasses
-                    }
-                >
+                <div className={"p-1 border border-1 border-white " + classes}>
                     {title}
                 </div>
             )}
