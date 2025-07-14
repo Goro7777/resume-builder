@@ -1,7 +1,3 @@
-export const DEFAULT_NAME = "Alice Barkley";
-export const DEFAULT_DESCRIPTION =
-    "Innovative and deadline-driven Graphic Designer with 3+ years of experience designing and developing user-centered digital/print marketing material from initial concept to final, polished deliverable.";
-
 export const GET_DEFAULT_SECTION_IDS = () => {
     let sections = Object.values(DEFAULT_PERSON.sections);
     let halfIndex = Math.ceil(sections.length / 2);
@@ -20,17 +16,10 @@ export const GET_DEFAULT_ITEMS = () => {
     return DEFAULT_PERSON.items;
 };
 
-export const DEFAULT_NEW_ITEM = {
-    title: "Title",
-    time: "Year 1 - Year 2",
-    place: "Location",
-    info: [],
-};
 export const DEFAULT_PERSON = {
     fullName: "Alice Barkley",
-    info: [
+    description:
         "Innovative and deadline-driven Graphic Designer with 3+ years of experience designing and developing user-centered digital/print marketing material from initial concept to final, polished deliverable.",
-    ],
     items: {
         0: {
             id: 0,

@@ -1,12 +1,16 @@
 import { useState } from "react";
-import { DEFAULT_PERSON, DEFAULT_NEW_ITEM } from "../constants";
+import {
+    DEFAULT_PERSON,
+    // DEFAULT_NEW_ITEM,
+    GET_DEFAULT_ITEM_IDS,
+} from "../constants";
 import EditableTitle from "./EditableTitle";
 import ResumeItem from "./ResumeItem";
 import EditButton from "./EditButton";
 
-export default function ResumeSection({ id, initialItemIds, isEditable }) {
+export default function ResumeSection({ id, isEditable }) {
     const [isEditing, setIsEditing] = useState(false);
-    const [itemIds, setItemIds] = useState(initialItemIds);
+    const [itemIds, setItemIds] = useState(() => GET_DEFAULT_ITEM_IDS(id));
 
     if (!isEditable && isEditing) {
         setIsEditing(false);
@@ -23,36 +27,26 @@ export default function ResumeSection({ id, initialItemIds, isEditable }) {
             <h3 className="resume-title">
                 <EditableTitle
                     isEditing={isEditing}
-                    initialValue={DEFAULT_PERSON.sections[id]?.name || "Title"}
+                    initialValue={
+                        DEFAULT_PERSON.sections[id]?.name || "Section Title"
+                    }
                 />
             </h3>
             {itemIds.map((id) => (
                 <ResumeItem
+                    key={id}
                     id={id}
                     isEditing={isEditing}
-                    initialParts={
-                        DEFAULT_PERSON.items[id]
-                            ? DEFAULT_PERSON.items[id]
-                            : DEFAULT_NEW_ITEM
-                    }
+                    // initialParts={
+                    //     DEFAULT_PERSON.items[id]
+                    //         ? DEFAULT_PERSON.items[id]
+                    //         : DEFAULT_NEW_ITEM
+                    // }
                 />
             ))}
             {/* <button type="button" className="btn btn-sm btn-info w-100">
                     <i className="bi bi-plus"></i> Add Item
                 </button> */}
-        </section>
-    );
-
-    return (
-        <section>
-            <h3 className="resume-title">Contacts</h3>
-            <div className="resume-item pb-0">
-                <ul>
-                    <li>Portland par 127,Orlando, FL</li>
-                    <li>(123) 456-7891</li>
-                    <li>alice.barkley@example.com</li>
-                </ul>
-            </div>
         </section>
     );
 }

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { DEFAULT_NAME, DEFAULT_DESCRIPTION } from "../constants";
+import { DEFAULT_PERSON } from "../constants";
 import EditableTitle from "./EditableTitle";
 import EditablePar from "./EditablePar";
 import EditButton from "./EditButton";
@@ -28,11 +28,11 @@ export default function ResumeHeader({ isEditable }) {
                 <EditableTitle
                     classes="h2 text-center"
                     isEditing={isEditing}
-                    initialValue={DEFAULT_NAME}
+                    initialValue={DEFAULT_PERSON.fullName}
                 />
                 <EditablePar
                     isEditing={isEditing}
-                    initialValue={DEFAULT_DESCRIPTION}
+                    initialValue={DEFAULT_PERSON.description}
                 />
             </>
         </div>
