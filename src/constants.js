@@ -83,10 +83,12 @@ export const DEFAULT_PERSON = {
             time: "2017 - 2018",
             place: "Stepping Stone Advertising, New York, NY",
             info: [
-                "Developed numerous marketing programs (logos, brochures,infographics, presentations, and advertisements).",
-                "Managed up to 5 projects or tasks at a given time while under pressure",
-                "Recommended and consulted with clients on the most appropriate graphic design",
-                "Created 4+ design presentations and proposals a month for clients and account managers",
+                [
+                    "Developed numerous marketing programs (logos, brochures,infographics, presentations, and advertisements).",
+                    "Managed up to 5 projects or tasks at a given time while under pressure",
+                    "Recommended and consulted with clients on the most appropriate graphic design",
+                    "Created 4+ design presentations and proposals a month for clients and account managers",
+                ],
             ],
         },
     },
