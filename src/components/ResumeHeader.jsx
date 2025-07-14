@@ -13,12 +13,7 @@ export default function ResumeHeader({ isEditable }) {
     }
 
     return (
-        <div
-            className={
-                "resume-section section-title p-2 w-75 mx-auto position-relative" +
-                (isEditing ? " highlighted" : "")
-            }
-        >
+        <div className="resume-section section-title p-2 w-75 mx-auto position-relative">
             <EditButton
                 isEditable={isEditable}
                 isEditing={isEditing}
