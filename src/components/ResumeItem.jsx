@@ -23,35 +23,37 @@ export default function ResumeItem({ id, isEditing, initialParts }) {
 
     return (
         <div className="resume-item">
-            {parts.title && (
-                <h4>
-                    {
-                        <EditableTitle
-                            isEditing={isEditing}
-                            initialValue={parts.title}
-                        />
-                    }
-                </h4>
-            )}
+            <header>
+                {parts.title && (
+                    <h4>
+                        {
+                            <EditableTitle
+                                isEditing={isEditing}
+                                initialValue={parts.title}
+                            />
+                        }
+                    </h4>
+                )}
 
-            {parts.time && (
-                <h5>
-                    <EditableTitle
-                        isEditing={isEditing}
-                        initialValue={parts.time}
-                    />
-                </h5>
-            )}
-            {parts.place && (
-                <p>
-                    <em>
+                {parts.time && (
+                    <h5>
                         <EditableTitle
                             isEditing={isEditing}
-                            initialValue={parts.place}
+                            initialValue={parts.time}
                         />
-                    </em>
-                </p>
-            )}
+                    </h5>
+                )}
+                {parts.place && (
+                    <p>
+                        <em>
+                            <EditableTitle
+                                isEditing={isEditing}
+                                initialValue={parts.place}
+                            />
+                        </em>
+                    </p>
+                )}
+            </header>
             {parts.info.map((infoItem) => {
                 if (Array.isArray(infoItem)) {
                     return (

@@ -5,44 +5,52 @@ body {
 .resume .resume-title {
     font-size: 26px;
     font-weight: 400;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin-top: 16px;
+    margin-bottom: 16px;
     color: #222222;
 }
 
 .resume .resume-item {
-    padding: 0 0 20px 20px;
+    padding: 0 0 30px 20px;
     margin-top: -2px;
     border-left: 2px solid #34b7a7;
     position: relative;
 }
 
-.resume .resume-item h4 {
+.resume .resume-item header {
+    margin-bottom: 12px;
+}
+
+.resume .resume-item header h4 {
     line-height: 18px;
     font-size: 18px;
     font-weight: 600;
     font-family: "Poppins", sans-serif;
     color: #1d685f;
-    margin-bottom: 5px;
+    margin-bottom: 6px;
 }
 
-.resume .resume-item h5 {
+.resume .resume-item header h5 {
     font-size: 16px;
     background: #effbf9;
     padding-inline: 15px;
     display: inline-block;
     font-weight: 600;
-    /* margin-bottom: 10px; */
+    margin-bottom: 6px;
     color: #34b7a7;
+}
+
+.resume .resume-item header p {
+    margin-bottom: 6px;
 }
 
 .resume .resume-item ul {
     padding-left: 20px;
 }
 
-/* .resume .resume-item ul li {
-    padding-bottom: 10px;
-} */
+.resume .resume-item > * {
+    margin-bottom: 6px;
+}
 
 .resume .resume-item:last-child {
     padding-bottom: 0;
