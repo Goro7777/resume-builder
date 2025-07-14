@@ -1,7 +1,31 @@
-import { useState } from "react";
+import { useState, Fragment } from "react";
+import ResumeSection from "./ResumeSection";
+import { GET_DEFAULT_ITEM_IDS } from "../constants";
 
 export default function ResumeColumn({ initialSectionIds, isEditable }) {
     const [sectionIds, setSectionIds] = useState(initialSectionIds);
+
+    return (
+        <div className="col-lg-6">
+            {sectionIds.map((sectionId) => {
+                console.log("sectionId: " + sectionId);
+                let initialItemIds = GET_DEFAULT_ITEM_IDS(sectionId);
+                return (
+                    <ResumeSection
+                        key={sectionId}
+                        id={sectionId}
+                        initialItemIds={initialItemIds}
+                        isEditable={isEditable}
+                    />
+                );
+            })}
+            {isEditable && (
+                <button type="button" className="btn btn-sm btn-info w-100">
+                    <i className="bi bi-plus"></i> Add Section
+                </button>
+            )}
+        </div>
+    );
 
     return (
         <div className="col-lg-6">

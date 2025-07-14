@@ -1,12 +1,13 @@
 import ResumeHeader from "./ResumeHeader";
-import { getSectionIds } from "../constants";
+import { GET_DEFAULT_SECTION_IDS } from "../constants";
 import ResumeColumn from "./ResumeColumn";
 
-// Column
-//  Section - Contacts, Education, Prof Experience
-//   Item   - Master..., Bachelor..., Senior..., Graphic...
-//   Item
-let [LFT_SECTION_IDS, RGT_SECTION_IDS] = getSectionIds();
+// Resume
+//  Column
+//   Section - Contacts, Education, Prof Experience
+//    Item   - Master..., Bachelor..., Senior..., Graphic...
+//    Item
+let [LFT_SECTION_IDS, RGT_SECTION_IDS] = GET_DEFAULT_SECTION_IDS();
 
 export default function Resume({ targetRef, isEditable }) {
     return (
