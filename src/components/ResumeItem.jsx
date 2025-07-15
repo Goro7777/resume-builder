@@ -39,7 +39,11 @@ export default function ResumeItem({ id, isEditing }) {
                         {
                             <EditableTitle
                                 isEditing={isEditing}
-                                initialValue={item.title}
+                                initialValue={
+                                    DEFAULT_PERSON.items[id]
+                                        ? item.title
+                                        : "Item Title"
+                                }
                             />
                         }
                     </h4>
@@ -49,7 +53,11 @@ export default function ResumeItem({ id, isEditing }) {
                     <h5>
                         <EditableTitle
                             isEditing={isEditing}
-                            initialValue={item.time}
+                            initialValue={
+                                DEFAULT_PERSON.items[id]
+                                    ? item.time
+                                    : "Time Interval"
+                            }
                             classes="px-4"
                         />
                     </h5>
@@ -59,7 +67,11 @@ export default function ResumeItem({ id, isEditing }) {
                         <em>
                             <EditableTitle
                                 isEditing={isEditing}
-                                initialValue={item.place}
+                                initialValue={
+                                    DEFAULT_PERSON.items[id]
+                                        ? item.place
+                                        : "Location"
+                                }
                             />
                         </em>
                     </div>
@@ -71,7 +83,11 @@ export default function ResumeItem({ id, isEditing }) {
                         {infoItem.map((point) => (
                             <li key={point}>
                                 <EditablePar
-                                    initialValue={point}
+                                    initialValue={
+                                        DEFAULT_PERSON.items[id]
+                                            ? point
+                                            : "Lorem ipsum dolor sit amet"
+                                    }
                                     isEditing={isEditing}
                                 />
                             </li>
@@ -81,7 +97,11 @@ export default function ResumeItem({ id, isEditing }) {
                     <EditablePar
                         key={infoItem}
                         isEditing={isEditing}
-                        initialValue={infoItem}
+                        initialValue={
+                            DEFAULT_PERSON.items[id]
+                                ? infoItem
+                                : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+                        }
                     />
                 );
             })}
