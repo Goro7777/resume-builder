@@ -2,11 +2,13 @@ import { useState } from "react";
 import { DEFAULT_PERSON, GET_DEFAULT_ITEM_IDS } from "../constants";
 import EditableTitle from "./EditableTitle";
 import ResumeItem from "./ResumeItem";
-import EditButton from "./EditButton";
+import ControlButtons from "./ControlButtons";
 
-export default function ResumeSection({ id, isEditable }) {
+export default function ResumeSection({ id, isEditable, onDelete }) {
     const [isEditing, setIsEditing] = useState(false);
-    const [itemIds, setItemIds] = useState(() => GET_DEFAULT_ITEM_IDS(id));
+    const [itemIds, setItemIds] = useState(
+        () => GET_DEFAULT_ITEM_IDS(id) || [crypto.randomUUID()]
+    );
 
     if (!isEditable && isEditing) {
         setIsEditing(false);
@@ -15,11 +17,14 @@ export default function ResumeSection({ id, isEditable }) {
 
     return (
         <section className="resume-section position-relative">
-            <EditButton
-                isEditable={isEditable}
-                isEditing={isEditing}
-                onClick={() => setIsEditing(!isEditing)}
-            />
+            {isEditable && (
+                <ControlButtons
+                    isEditing={isEditing}
+                    onEdit={() => setIsEditing(!isEditing)}
+                    onDelete={onDelete}
+                />
+            )}
+
             <h3 className="resume-title">
                 <EditableTitle
                     isEditing={isEditing}

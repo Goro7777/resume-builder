@@ -5,7 +5,7 @@ export default function EditButton({ isEditable, isEditing, onClick }) {
         <button
             onClick={onClick}
             className={
-                "btn btn-link position-absolute fs-5 end-0 bi bi-" +
+                "btn btn-link fs-5 bi bi-" +
                 (isEditing ? "check2-square" : "pencil-square")
             }
         ></button>
