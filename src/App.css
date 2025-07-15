@@ -49,6 +49,7 @@ body {
 
 .resume .resume-item:last-child {
     padding-bottom: 0;
+    margin-bottom: 10px;
 }
 
 .resume .resume-item::before {

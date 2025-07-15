@@ -1,5 +1,6 @@
-import { useState, Fragment } from "react";
+import { useState } from "react";
 import ResumeSection from "./ResumeSection";
+import AddButton from "./AddButton";
 
 export default function ResumeColumn({ initialSectionIds, isEditable }) {
     const [sectionIds, setSectionIds] = useState(initialSectionIds);
@@ -23,13 +24,7 @@ export default function ResumeColumn({ initialSectionIds, isEditable }) {
                 );
             })}
             {isEditable && (
-                <button
-                    type="button"
-                    className="btn btn-sm btn-outline-success w-100"
-                    onClick={handleAddSection}
-                >
-                    <i className="bi bi-plus"></i> Add Section
-                </button>
+                <AddButton text="Add Section" onAdd={handleAddSection} />
             )}
         </div>
     );

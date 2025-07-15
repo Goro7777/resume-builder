@@ -3,6 +3,7 @@ import { DEFAULT_PERSON, GET_DEFAULT_ITEM_IDS } from "../constants";
 import EditableTitle from "./EditableTitle";
 import ResumeItem from "./ResumeItem";
 import ControlButtons from "./ControlButtons";
+import AddButton from "./AddButton";
 
 export default function ResumeSection({ id, isEditable, onDelete }) {
     const [isEditing, setIsEditing] = useState(false);
@@ -14,6 +15,9 @@ export default function ResumeSection({ id, isEditable, onDelete }) {
         setIsEditing(false);
         return null;
     }
+
+    const handleAddItem = () =>
+        setItemIds((ids) => [...ids, crypto.randomUUID()]);
 
     return (
         <section className="resume-section position-relative">
@@ -36,9 +40,11 @@ export default function ResumeSection({ id, isEditable, onDelete }) {
             {itemIds.map((id) => (
                 <ResumeItem key={id} id={id} isEditing={isEditing} />
             ))}
-            {/* <button type="button" className="btn btn-sm btn-info w-100">
-                    <i className="bi bi-plus"></i> Add Item
-                </button> */}
+            {isEditable && (
+                <div className="resume-item">
+                    <AddButton text="Add item" onAdd={handleAddItem} />
+                </div>
+            )}
         </section>
     );
 }
