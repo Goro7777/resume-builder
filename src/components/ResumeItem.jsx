@@ -20,7 +20,7 @@ let itemsExample = {
     },
 };
 
-export default function ResumeItem({ id, isEditing }) {
+export default function ResumeItem({ id, isEditing, isEditable }) {
     const [item, setItem] = useState(
         () =>
             DEFAULT_PERSON.items[id] || {
@@ -31,26 +31,47 @@ export default function ResumeItem({ id, isEditing }) {
             }
     );
 
+    const handleDeleteHeaderItem = (property) => {
+        setItem((item) => ({
+            ...item,
+            [property]: "",
+        }));
+    };
+
     return (
         <div className="resume-item">
             <header>
                 {item.title && (
-                    <h4>
-                        {
-                            <EditableTitle
-                                isEditing={isEditing}
-                                initialValue={
-                                    DEFAULT_PERSON.items[id]
-                                        ? item.title
-                                        : "Item Title"
-                                }
-                            />
-                        }
+                    <h4 className="position-relative">
+                        {isEditable && !isEditing && (
+                            <button
+                                className="btn py-0 position-absolute end-0"
+                                onClick={() => handleDeleteHeaderItem("title")}
+                            >
+                                <i className="text-danger fs-5 bi bi-x"></i>
+                            </button>
+                        )}
+                        <EditableTitle
+                            isEditing={isEditing}
+                            initialValue={
+                                DEFAULT_PERSON.items[id]
+                                    ? item.title
+                                    : "Item Title"
+                            }
+                        />
                     </h4>
                 )}
 
                 {item.time && (
                     <h5>
+                        {isEditable && !isEditing && (
+                            <button
+                                className="btn py-0 position-absolute end-0"
+                                onClick={() => handleDeleteHeaderItem("time")}
+                            >
+                                <i className="text-danger fs-5 bi bi-x"></i>
+                            </button>
+                        )}
                         <EditableTitle
                             isEditing={isEditing}
                             initialValue={
@@ -64,6 +85,14 @@ export default function ResumeItem({ id, isEditing }) {
                 )}
                 {item.place && (
                     <div>
+                        {isEditable && !isEditing && (
+                            <button
+                                className="btn py-0 position-absolute end-0"
+                                onClick={() => handleDeleteHeaderItem("place")}
+                            >
+                                <i className="text-danger fs-5 bi bi-x"></i>
+                            </button>
+                        )}
                         <em>
                             <EditableTitle
                                 isEditing={isEditing}

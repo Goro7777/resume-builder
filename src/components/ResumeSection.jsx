@@ -38,7 +38,12 @@ export default function ResumeSection({ id, isEditable, onDelete }) {
                 />
             </h3>
             {itemIds.map((id) => (
-                <ResumeItem key={id} id={id} isEditing={isEditing} />
+                <ResumeItem
+                    key={id}
+                    id={id}
+                    isEditing={isEditing}
+                    isEditable={isEditable}
+                />
             ))}
             {isEditable && (
                 <div className="resume-item">
