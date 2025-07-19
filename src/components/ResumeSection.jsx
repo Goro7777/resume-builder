@@ -47,7 +47,11 @@ export default function ResumeSection({ id, isEditable, onDelete }) {
             ))}
             {isEditable && (
                 <div className="resume-item">
-                    <AddButton text="Add item" onAdd={handleAddItem} />
+                    <AddButton
+                        text="Add item"
+                        onAdd={handleAddItem}
+                        classes="w-50"
+                    />
                 </div>
             )}
         </section>

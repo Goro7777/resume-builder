@@ -2,6 +2,7 @@ import EditableTitle from "./EditableTitle";
 import EditablePar from "./EditablePar";
 import { useState } from "react";
 import { DEFAULT_PERSON } from "../constants";
+import AddButton from "./AddButton";
 
 let itemsExample = {
     0: {
@@ -20,27 +21,58 @@ let itemsExample = {
     },
 };
 
+const DEFAULT_ITEM = {
+    title: "Title",
+    time: "2020 - 2021",
+    place: "Saint Petersburg, Russia",
+    info: [],
+};
+
 export default function ResumeItem({ id, isEditing, isEditable }) {
     const [item, setItem] = useState(
-        () =>
-            DEFAULT_PERSON.items[id] || {
-                title: "Title",
-                time: "2020 - 2021",
-                place: "Saint Petersburg, Russia",
-                info: [],
-            }
+        () => DEFAULT_PERSON.items[id] || DEFAULT_ITEM
     );
 
-    const handleDeleteHeaderItem = (property) => {
+    const handleDeleteHeaderItem = (key) => {
         setItem((item) => ({
             ...item,
-            [property]: "",
+            [key]: "",
+        }));
+    };
+
+    const handleAddHeaderItem = (key) => {
+        setItem((item) => ({
+            ...item,
+            [key]: DEFAULT_ITEM[key],
         }));
     };
 
     return (
         <div className="resume-item">
             <header>
+                <div className="mb-2">
+                    {isEditable && !item.title && (
+                        <AddButton
+                            classes="py-0 w-25 me-2"
+                            text="Add Title"
+                            onAdd={() => handleAddHeaderItem("title")}
+                        />
+                    )}
+                    {isEditable && !item.time && (
+                        <AddButton
+                            classes="py-0 w-25 me-2"
+                            text="Add Time"
+                            onAdd={() => handleAddHeaderItem("time")}
+                        />
+                    )}
+                    {isEditable && !item.place && (
+                        <AddButton
+                            classes="py-0 w-25"
+                            text="Add Place"
+                            onAdd={() => handleAddHeaderItem("place")}
+                        />
+                    )}
+                </div>
                 {item.title && (
                     <h4 className="position-relative">
                         {isEditable && !isEditing && (
