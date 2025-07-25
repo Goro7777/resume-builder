@@ -35,6 +35,20 @@ export default function ResumeItem({ id, isEditing, isEditable }) {
         });
     };
 
+    const handleAddListPoint = (partId) => {
+        setBody((body) =>
+            body.map((part) => {
+                if (part.id !== partId) return part;
+
+                let nextPart = {
+                    ...part,
+                    data: [...part.data, crypto.randomUUID()],
+                };
+                return nextPart;
+            })
+        );
+    };
+
     const handleDeleteBodyPart = (partId, listItemId = null) => {
         if (!listItemId) {
             setBody((body) => body.filter((part) => part.id !== partId));
@@ -62,34 +76,45 @@ export default function ResumeItem({ id, isEditing, isEditable }) {
 
         if (isList) {
             return (
-                <ul key={part.id}>
-                    {part.data.map((listItem) => {
-                        let initialValue = DEFAULT_PERSON.items[id]?.info
-                            .find((infoPart) => infoPart.id === part.id)
-                            ?.data.includes(listItem)
-                            ? listItem
-                            : DEFAULT_LIST_ITEM;
+                <div key={part.id}>
+                    <ul>
+                        {part.data.map((listItem) => {
+                            let initialValue = DEFAULT_PERSON.items[id]?.info
+                                .find((infoPart) => infoPart.id === part.id)
+                                ?.data.includes(listItem)
+                                ? listItem
+                                : DEFAULT_LIST_ITEM;
 
-                        return (
-                            <li key={listItem}>
-                                {isEditable && !isEditing && (
-                                    <DeleteButton
-                                        onDelete={() =>
-                                            handleDeleteBodyPart(
-                                                part.id,
-                                                listItem
-                                            )
-                                        }
+                            return (
+                                <li key={listItem}>
+                                    {isEditable && !isEditing && (
+                                        <DeleteButton
+                                            onDelete={() =>
+                                                handleDeleteBodyPart(
+                                                    part.id,
+                                                    listItem
+                                                )
+                                            }
+                                        />
+                                    )}
+                                    <EditablePar
+                                        initialValue={initialValue}
+                                        isEditing={isEditing}
                                     />
-                                )}
-                                <EditablePar
-                                    initialValue={initialValue}
-                                    isEditing={isEditing}
+                                </li>
+                            );
+                        })}
+                        {isEditable && (
+                            <div>
+                                <AddButton
+                                    classes="py-0 w-25 me-2"
+                                    text="Add Point"
+                                    onAdd={() => handleAddListPoint(part.id)}
                                 />
-                            </li>
-                        );
-                    })}
-                </ul>
+                            </div>
+                        )}
+                    </ul>
+                </div>
             );
         }
 
