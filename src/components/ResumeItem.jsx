@@ -35,8 +35,26 @@ export default function ResumeItem({ id, isEditing, isEditable }) {
         });
     };
 
-    const handleDeleteBodyPart = (partId) => {
-        setBody((body) => body.filter((part) => part.id !== partId));
+    const handleDeleteBodyPart = (partId, listItemId = null) => {
+        if (!listItemId) {
+            setBody((body) => body.filter((part) => part.id !== partId));
+        } else {
+            setBody((body) => {
+                let nextParts = [];
+                for (let part of body) {
+                    if (part.id === partId) {
+                        let list = {
+                            ...part,
+                            data: part.data.filter((id) => id !== listItemId),
+                        };
+                        if (list.data.length > 0) nextParts.push(list);
+                    } else {
+                        nextParts.push(part);
+                    }
+                }
+                return nextParts;
+            });
+        }
     };
 
     let bodyParts = body.map((part) => {
@@ -54,6 +72,16 @@ export default function ResumeItem({ id, isEditing, isEditable }) {
 
                         return (
                             <li key={listItem}>
+                                {isEditable && !isEditing && (
+                                    <DeleteButton
+                                        onDelete={() =>
+                                            handleDeleteBodyPart(
+                                                part.id,
+                                                listItem
+                                            )
+                                        }
+                                    />
+                                )}
                                 <EditablePar
                                     initialValue={initialValue}
                                     isEditing={isEditing}
