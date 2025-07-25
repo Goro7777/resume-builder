@@ -34,6 +34,10 @@ export default function ResumeItem({ id, isEditing, isEditable }) {
         });
     };
 
+    const handleDeleteBodyPart = (partId) => {
+        setBody((body) => body.filter((part) => part.id !== partId));
+    };
+
     let bodyParts = body.map((part) => {
         let bulletList = Array.isArray(part.data);
 
@@ -49,11 +53,20 @@ export default function ResumeItem({ id, isEditing, isEditable }) {
                 : DEFAULT_PARAGRAPH;
 
             return (
-                <EditablePar
-                    key={part.id}
-                    isEditing={isEditing}
-                    initialValue={initialValue}
-                />
+                <div key={part.id} className="position-relative">
+                    {isEditable && !isEditing && (
+                        <button
+                            className="btn py-0 position-absolute end-0"
+                            onClick={() => handleDeleteBodyPart(part.id)}
+                        >
+                            <i className="text-danger fs-5 bi bi-x"></i>
+                        </button>
+                    )}
+                    <EditablePar
+                        isEditing={isEditing}
+                        initialValue={initialValue}
+                    />
+                </div>
             );
         }
     });
