@@ -1,6 +1,5 @@
 import { useState } from "react";
 import EditablePar from "./EditablePar";
-import ItemList from "./ItemList";
 import AddButton from "./AddButton";
 import DeleteButton from "./DeleteButton";
 import ItemHeader from "./ItemHeader";
@@ -8,6 +7,7 @@ import { DEFAULT_PERSON } from "../constants";
 
 const DEFAULT_PARAGRAPH =
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
+const DEFAULT_LIST_ITEM = "Lorem ipsum dolor sit amet.";
 
 export default function ResumeItem({ id, isEditing, isEditable }) {
     const [body, setBody] = useState(DEFAULT_PERSON.items[id]?.info || []);
@@ -40,13 +40,32 @@ export default function ResumeItem({ id, isEditing, isEditable }) {
     };
 
     let bodyParts = body.map((part) => {
-        let bulletList = Array.isArray(part.data);
+        let isList = Array.isArray(part.data);
 
-        if (bulletList) {
-            <ItemList itemId={id} data={part} />;
+        if (isList) {
+            return (
+                <ul key={part.id}>
+                    {part.data.map((listItem) => {
+                        let initialValue = DEFAULT_PERSON.items[id]?.info
+                            .find((infoPart) => infoPart.id === part.id)
+                            ?.data.includes(listItem)
+                            ? listItem
+                            : DEFAULT_LIST_ITEM;
+
+                        return (
+                            <li key={listItem}>
+                                <EditablePar
+                                    initialValue={initialValue}
+                                    isEditing={isEditing}
+                                />
+                            </li>
+                        );
+                    })}
+                </ul>
+            );
         }
 
-        if (!bulletList) {
+        if (!isList) {
             let initialValue = DEFAULT_PERSON.items[id]?.info.find(
                 (infoPart) => infoPart.id === part.id
             )
@@ -76,37 +95,9 @@ export default function ResumeItem({ id, isEditing, isEditable }) {
                 isEditing={isEditing}
                 itemId={id}
             />
+
             {bodyParts}
-            {/* {item.info.map((infoItem, infoItemInd) => {
-                return Array.isArray(infoItem) ? (
-                    <ul key={infoItem[0]}>
-                        {infoItem.map((point, pointInd) => (
-                            <li key={point}>
-                                <EditablePar
-                                    initialValue={
-                                        DEFAULT_PERSON.items[id]?.info[
-                                            infoItemInd
-                                        ]?.includes(point)
-                                            ? point
-                                            : "Lorem ipsum dolor sit amet"
-                                    }
-                                    isEditing={isEditing}
-                                />
-                            </li>
-                        ))}
-                    </ul>
-                ) : (
-                    <EditablePar
-                        key={infoItem}
-                        isEditing={isEditing}
-                        initialValue={
-                            DEFAULT_PERSON.items[id]?.info[infoItemInd]
-                                ? infoItem
-                                : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-                        }
-                    />
-                );
-            })} */}
+
             {isEditable && (
                 <div>
                     <AddButton
