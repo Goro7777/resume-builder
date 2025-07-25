@@ -33,17 +33,33 @@ export default function ResumeItem({ id, isEditing, isEditable }) {
         () => DEFAULT_PERSON.items[id] || DEFAULT_ITEM
     );
 
-    const handleDeleteHeaderItem = (key) => {
+    const handleDeleteHeaderPart = (key) => {
         setItem((item) => ({
             ...item,
             [key]: "",
         }));
     };
 
-    const handleAddHeaderItem = (key) => {
+    const handleAddHeaderPart = (key) => {
         setItem((item) => ({
             ...item,
             [key]: DEFAULT_ITEM[key],
+        }));
+    };
+
+    const handleAddBodyPart = (part = "") => {
+        setItem((item) => ({
+            ...item,
+            info: [
+                ...item.info,
+                part !== "list"
+                    ? crypto.randomUUID()
+                    : [
+                          crypto.randomUUID(),
+                          crypto.randomUUID(),
+                          crypto.randomUUID(),
+                      ],
+            ],
         }));
     };
 
@@ -55,21 +71,21 @@ export default function ResumeItem({ id, isEditing, isEditable }) {
                         <AddButton
                             classes="py-0 w-25 me-2"
                             text="Add Title"
-                            onAdd={() => handleAddHeaderItem("title")}
+                            onAdd={() => handleAddHeaderPart("title")}
                         />
                     )}
                     {isEditable && !item.time && (
                         <AddButton
                             classes="py-0 w-25 me-2"
                             text="Add Time"
-                            onAdd={() => handleAddHeaderItem("time")}
+                            onAdd={() => handleAddHeaderPart("time")}
                         />
                     )}
                     {isEditable && !item.place && (
                         <AddButton
                             classes="py-0 w-25"
                             text="Add Place"
-                            onAdd={() => handleAddHeaderItem("place")}
+                            onAdd={() => handleAddHeaderPart("place")}
                         />
                     )}
                 </div>
@@ -78,7 +94,7 @@ export default function ResumeItem({ id, isEditing, isEditable }) {
                         {isEditable && !isEditing && (
                             <button
                                 className="btn py-0 position-absolute end-0"
-                                onClick={() => handleDeleteHeaderItem("title")}
+                                onClick={() => handleDeleteHeaderPart("title")}
                             >
                                 <i className="text-danger fs-5 bi bi-x"></i>
                             </button>
@@ -99,7 +115,7 @@ export default function ResumeItem({ id, isEditing, isEditable }) {
                         {isEditable && !isEditing && (
                             <button
                                 className="btn py-0 position-absolute end-0"
-                                onClick={() => handleDeleteHeaderItem("time")}
+                                onClick={() => handleDeleteHeaderPart("time")}
                             >
                                 <i className="text-danger fs-5 bi bi-x"></i>
                             </button>
@@ -120,7 +136,7 @@ export default function ResumeItem({ id, isEditing, isEditable }) {
                         {isEditable && !isEditing && (
                             <button
                                 className="btn py-0 position-absolute end-0"
-                                onClick={() => handleDeleteHeaderItem("place")}
+                                onClick={() => handleDeleteHeaderPart("place")}
                             >
                                 <i className="text-danger fs-5 bi bi-x"></i>
                             </button>
@@ -138,14 +154,16 @@ export default function ResumeItem({ id, isEditing, isEditable }) {
                     </div>
                 )}
             </header>
-            {item.info.map((infoItem) => {
+            {item.info.map((infoItem, infoItemInd) => {
                 return Array.isArray(infoItem) ? (
                     <ul key={infoItem[0]}>
-                        {infoItem.map((point) => (
+                        {infoItem.map((point, pointInd) => (
                             <li key={point}>
                                 <EditablePar
                                     initialValue={
-                                        DEFAULT_PERSON.items[id]
+                                        DEFAULT_PERSON.items[id]?.info[
+                                            infoItemInd
+                                        ]?.includes(point)
                                             ? point
                                             : "Lorem ipsum dolor sit amet"
                                     }
@@ -159,13 +177,27 @@ export default function ResumeItem({ id, isEditing, isEditable }) {
                         key={infoItem}
                         isEditing={isEditing}
                         initialValue={
-                            DEFAULT_PERSON.items[id]
+                            DEFAULT_PERSON.items[id]?.info[infoItemInd]
                                 ? infoItem
                                 : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
                         }
                     />
                 );
             })}
+            {isEditable && (
+                <div>
+                    <AddButton
+                        classes="py-0 w-25 me-2"
+                        text="Add Paragraph"
+                        onAdd={() => handleAddBodyPart()}
+                    />
+                    <AddButton
+                        classes="py-0 w-25 me-2"
+                        text="Add Bullet List"
+                        onAdd={() => handleAddBodyPart("list")}
+                    />
+                </div>
+            )}
         </div>
     );
 }
