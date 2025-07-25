@@ -2,6 +2,7 @@ import { useState } from "react";
 import EditablePar from "./EditablePar";
 import ItemList from "./ItemList";
 import AddButton from "./AddButton";
+import DeleteButton from "./DeleteButton";
 import ItemHeader from "./ItemHeader";
 import { DEFAULT_PERSON } from "../constants";
 
@@ -55,12 +56,9 @@ export default function ResumeItem({ id, isEditing, isEditable }) {
             return (
                 <div key={part.id} className="position-relative">
                     {isEditable && !isEditing && (
-                        <button
-                            className="btn py-0 position-absolute end-0"
-                            onClick={() => handleDeleteBodyPart(part.id)}
-                        >
-                            <i className="text-danger fs-5 bi bi-x"></i>
-                        </button>
+                        <DeleteButton
+                            onDelete={() => handleDeleteBodyPart(part.id)}
+                        />
                     )}
                     <EditablePar
                         isEditing={isEditing}

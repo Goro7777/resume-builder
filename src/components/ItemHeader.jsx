@@ -2,6 +2,7 @@ import { useState } from "react";
 import { DEFAULT_PERSON } from "../constants";
 import EditableTitle from "./EditableTitle";
 import AddButton from "./AddButton";
+import DeleteButton from "./DeleteButton";
 
 const DEFAULT_HEADER = {
     title: "Your Title",
@@ -62,12 +63,9 @@ export default function ItemHeader({ itemId, isEditable, isEditing }) {
             {header.title && (
                 <h4 className="position-relative">
                     {isEditable && !isEditing && (
-                        <button
-                            className="btn py-0 position-absolute end-0"
-                            onClick={() => handleDeletePart("title")}
-                        >
-                            <i className="text-danger fs-5 bi bi-x"></i>
-                        </button>
+                        <DeleteButton
+                            onDelete={() => handleDeletePart("title")}
+                        />
                     )}
                     <EditableTitle
                         isEditing={isEditing}
@@ -78,12 +76,9 @@ export default function ItemHeader({ itemId, isEditable, isEditing }) {
             {header.time && (
                 <h5>
                     {isEditable && !isEditing && (
-                        <button
-                            className="btn py-0 position-absolute end-0"
-                            onClick={() => handleDeletePart("time")}
-                        >
-                            <i className="text-danger fs-5 bi bi-x"></i>
-                        </button>
+                        <DeleteButton
+                            onDelete={() => handleDeletePart("time")}
+                        />
                     )}
                     <EditableTitle
                         isEditing={isEditing}
@@ -95,12 +90,9 @@ export default function ItemHeader({ itemId, isEditable, isEditing }) {
             {header.place && (
                 <div>
                     {isEditable && !isEditing && (
-                        <button
-                            className="btn py-0 position-absolute end-0"
-                            onClick={() => handleDeletePart("place")}
-                        >
-                            <i className="text-danger fs-5 bi bi-x"></i>
-                        </button>
+                        <DeleteButton
+                            onDelete={() => handleDeletePart("place")}
+                        />
                     )}
                     <em>
                         <EditableTitle
