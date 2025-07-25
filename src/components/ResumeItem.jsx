@@ -1,54 +1,62 @@
-import EditableTitle from "./EditableTitle";
-import EditablePar from "./EditablePar";
 import { useState } from "react";
-import { DEFAULT_PERSON } from "../constants";
+import EditablePar from "./EditablePar";
+import ItemList from "./ItemList";
 import AddButton from "./AddButton";
 import ItemHeader from "./ItemHeader";
+import { DEFAULT_PERSON } from "../constants";
 
-let itemsExample = {
-    0: {
-        id: 0,
-        title: "",
-        time: "",
-        place: "",
-        info: [
-            // optional sentence
-            [
-                "Portland par 127,Orlando, FL",
-                "(123) 456-7891",
-                "alice.barkley@example.com",
-            ],
-        ],
-    },
-};
-
-const DEFAULT_ITEM = {
-    title: "Title",
-    time: "2020 - 2021",
-    place: "Saint Petersburg, Russia",
-    info: [],
-};
+const DEFAULT_PARAGRAPH =
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
 
 export default function ResumeItem({ id, isEditing, isEditable }) {
-    const [item, setItem] = useState(
-        () => DEFAULT_PERSON.items[id] || DEFAULT_ITEM
-    );
+    const [body, setBody] = useState(DEFAULT_PERSON.items[id]?.info || []);
 
-    const handleAddBodyPart = (part = "") => {
-        setItem((item) => ({
-            ...item,
-            info: [
-                ...item.info,
-                part !== "list"
-                    ? crypto.randomUUID()
-                    : [
-                          crypto.randomUUID(),
-                          crypto.randomUUID(),
-                          crypto.randomUUID(),
-                      ],
-            ],
-        }));
+    const handleAddBodyPart = (partType = "paragraph") => {
+        setBody((body) => {
+            let newPart;
+
+            if (partType === "paragraph")
+                newPart = {
+                    id: crypto.randomUUID(),
+                    data: DEFAULT_PARAGRAPH,
+                };
+            else if (partType === "list")
+                newPart = {
+                    id: crypto.randomUUID(),
+                    data: [
+                        crypto.randomUUID(),
+                        crypto.randomUUID(),
+                        crypto.randomUUID(),
+                    ],
+                };
+
+            return [...body, newPart];
+        });
     };
+
+    let bodyParts = body.map((part) => {
+        let bulletList = Array.isArray(part.data);
+
+        if (bulletList) {
+            <ItemList itemId={id} data={part} />;
+        }
+
+        if (!bulletList) {
+            let initialValue = DEFAULT_PERSON.items[id]?.info.find(
+                (infoPart) => infoPart.id === part.id
+            )
+                ? part.data
+                : DEFAULT_PARAGRAPH;
+
+            return (
+                <EditablePar
+                    key={part.id}
+                    isEditing={isEditing}
+                    initialValue={initialValue}
+                />
+            );
+        }
+    });
 
     return (
         <div className="resume-item">
@@ -57,7 +65,8 @@ export default function ResumeItem({ id, isEditing, isEditable }) {
                 isEditing={isEditing}
                 itemId={id}
             />
-            {item.info.map((infoItem, infoItemInd) => {
+            {bodyParts}
+            {/* {item.info.map((infoItem, infoItemInd) => {
                 return Array.isArray(infoItem) ? (
                     <ul key={infoItem[0]}>
                         {infoItem.map((point, pointInd) => (
@@ -86,7 +95,7 @@ export default function ResumeItem({ id, isEditing, isEditable }) {
                         }
                     />
                 );
-            })}
+            })} */}
             {isEditable && (
                 <div>
                     <AddButton
