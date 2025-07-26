@@ -1,7 +1,6 @@
 import { useState } from "react";
 import EditablePar from "./EditablePar";
 import Button from "./Button";
-import DeleteButton from "./DeleteButton";
 import ItemHeader from "./ItemHeader";
 import {
     DEFAULT_PERSON,
@@ -88,8 +87,10 @@ export default function ResumeItem({ id, isEditing, isEditable, onDelete }) {
                             return (
                                 <li key={listItem}>
                                     {isEditable && !isEditing && (
-                                        <DeleteButton
-                                            onDelete={() =>
+                                        <Button
+                                            type="delete"
+                                            classes="border-0 position-absolute end-0"
+                                            onClick={() =>
                                                 handleDeleteBodyPart(
                                                     part.id,
                                                     listItem
@@ -128,8 +129,10 @@ export default function ResumeItem({ id, isEditing, isEditable, onDelete }) {
             return (
                 <div key={part.id} className="position-relative">
                     {isEditable && !isEditing && (
-                        <DeleteButton
-                            onDelete={() => handleDeleteBodyPart(part.id)}
+                        <Button
+                            type="delete"
+                            classes="border-0 position-absolute end-0"
+                            onClick={() => handleDeleteBodyPart(part.id)}
                         />
                     )}
                     <EditablePar

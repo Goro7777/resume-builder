@@ -1,7 +1,6 @@
 import { useState } from "react";
 import EditableTitle from "./EditableTitle";
 import Button from "./Button";
-import DeleteButton from "./DeleteButton";
 import { DEFAULT_PERSON, DEFAULT_ITEM_HEADER } from "../defaults";
 
 export default function ItemHeader({ itemId, isEditable, isEditing }) {
@@ -57,8 +56,10 @@ export default function ItemHeader({ itemId, isEditable, isEditing }) {
             {header.title && (
                 <h4 className="position-relative">
                     {isEditable && !isEditing && (
-                        <DeleteButton
-                            onDelete={() => handleDeletePart("title")}
+                        <Button
+                            type="delete"
+                            classes="border-0 position-absolute end-0"
+                            onClick={() => handleDeletePart("title")}
                         />
                     )}
                     <EditableTitle
@@ -70,8 +71,10 @@ export default function ItemHeader({ itemId, isEditable, isEditing }) {
             {header.time && (
                 <h5>
                     {isEditable && !isEditing && (
-                        <DeleteButton
-                            onDelete={() => handleDeletePart("time")}
+                        <Button
+                            type="delete"
+                            classes="border-0 position-absolute end-0"
+                            onClick={() => handleDeletePart("time")}
                         />
                     )}
                     <EditableTitle
@@ -84,8 +87,10 @@ export default function ItemHeader({ itemId, isEditable, isEditing }) {
             {header.place && (
                 <div>
                     {isEditable && !isEditing && (
-                        <DeleteButton
-                            onDelete={() => handleDeletePart("place")}
+                        <Button
+                            type="delete"
+                            classes="border-0 position-absolute end-0"
+                            onClick={() => handleDeletePart("place")}
                         />
                     )}
                     <em>
