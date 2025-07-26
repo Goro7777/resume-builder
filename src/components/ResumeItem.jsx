@@ -12,16 +12,16 @@ const DEFAULT_LIST_ITEM = "Lorem ipsum dolor sit amet.";
 export default function ResumeItem({ id, isEditing, isEditable }) {
     const [body, setBody] = useState(DEFAULT_PERSON.items[id]?.info || []);
 
-    const handleAddBodyPart = (partType = "paragraph") => {
+    const handleAddBodyPart = (type = "paragraph") => {
         setBody((body) => {
             let newPart;
 
-            if (partType === "paragraph")
+            if (type === "paragraph")
                 newPart = {
                     id: crypto.randomUUID(),
                     data: DEFAULT_PARAGRAPH,
                 };
-            else if (partType === "list")
+            else if (type === "list")
                 newPart = {
                     id: crypto.randomUUID(),
                     data: [
@@ -33,20 +33,6 @@ export default function ResumeItem({ id, isEditing, isEditable }) {
 
             return [...body, newPart];
         });
-    };
-
-    const handleAddListPoint = (partId) => {
-        setBody((body) =>
-            body.map((part) => {
-                if (part.id !== partId) return part;
-
-                let nextPart = {
-                    ...part,
-                    data: [...part.data, crypto.randomUUID()],
-                };
-                return nextPart;
-            })
-        );
     };
 
     const handleDeleteBodyPart = (partId, listItemId = null) => {
@@ -71,7 +57,21 @@ export default function ResumeItem({ id, isEditing, isEditable }) {
         }
     };
 
-    let bodyParts = body.map((part) => {
+    const handleAddListPoint = (partId) => {
+        setBody((body) =>
+            body.map((part) => {
+                if (part.id !== partId) return part;
+
+                let nextPart = {
+                    ...part,
+                    data: [...part.data, crypto.randomUUID()],
+                };
+                return nextPart;
+            })
+        );
+    };
+
+    let bodyContent = body.map((part) => {
         let isList = Array.isArray(part.data);
 
         if (isList) {
@@ -149,7 +149,7 @@ export default function ResumeItem({ id, isEditing, isEditable }) {
                 itemId={id}
             />
 
-            {bodyParts}
+            {bodyContent}
 
             {isEditable && (
                 <div>
