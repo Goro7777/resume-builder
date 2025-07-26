@@ -1,6 +1,6 @@
 import { useState } from "react";
 import EditablePar from "./EditablePar";
-import AddButton from "./AddButton";
+import Button from "./Button";
 import DeleteButton from "./DeleteButton";
 import ItemHeader from "./ItemHeader";
 import {
@@ -106,10 +106,10 @@ export default function ResumeItem({ id, isEditing, isEditable, onDelete }) {
                         })}
                         {isEditable && (
                             <div>
-                                <AddButton
-                                    classes="py-0 w-25 me-2"
-                                    text="Add Point"
-                                    onAdd={() => handleAddListPoint(part.id)}
+                                <Button
+                                    text="Point"
+                                    onClick={() => handleAddListPoint(part.id)}
+                                    classes="w-25 py-0"
                                 />
                             </div>
                         )}
@@ -144,13 +144,12 @@ export default function ResumeItem({ id, isEditing, isEditable, onDelete }) {
     return (
         <div className="resume-item">
             {isEditable && (
-                <button
-                    type="button"
-                    className="w-50 btn btn-sm btn-outline-danger  "
+                <Button
+                    text="Item"
+                    type="delete"
                     onClick={onDelete}
-                >
-                    <i className="bi bi-plus"></i> Delete Item
-                </button>
+                    classes="w-50"
+                />
             )}
             <ItemHeader
                 isEditable={isEditable}
@@ -162,15 +161,15 @@ export default function ResumeItem({ id, isEditing, isEditable, onDelete }) {
 
             {isEditable && (
                 <div>
-                    <AddButton
-                        classes="py-0 w-25 me-2"
-                        text="Add Paragraph"
-                        onAdd={() => handleAddBodyPart()}
+                    <Button
+                        text="Paragraph"
+                        onClick={() => handleAddBodyPart()}
+                        classes="w-25 py-0"
                     />
-                    <AddButton
-                        classes="py-0 w-25 me-2"
-                        text="Add Bullet List"
-                        onAdd={() => handleAddBodyPart("list")}
+                    <Button
+                        text="Bullet List"
+                        onClick={() => handleAddBodyPart("list")}
+                        classes="w-25 py-0"
                     />
                 </div>
             )}

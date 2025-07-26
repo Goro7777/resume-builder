@@ -3,7 +3,7 @@ import { DEFAULT_PERSON } from "../defaults";
 import EditableTitle from "./EditableTitle";
 import ResumeItem from "./ResumeItem";
 import ControlButtons from "./ControlButtons";
-import AddButton from "./AddButton";
+import Button from "./Button";
 
 export default function ResumeSection({ id, isEditable, onDelete }) {
     const [isEditing, setIsEditing] = useState(false);
@@ -51,9 +51,9 @@ export default function ResumeSection({ id, isEditable, onDelete }) {
             ))}
             {isEditable && (
                 <div className="resume-item">
-                    <AddButton
-                        text="Add item"
-                        onAdd={handleAddItem}
+                    <Button
+                        text="Item"
+                        onClick={handleAddItem}
                         classes="w-50"
                     />
                 </div>

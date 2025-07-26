@@ -1,6 +1,6 @@
 import { useState } from "react";
 import ResumeSection from "./ResumeSection";
-import AddButton from "./AddButton";
+import Button from "./Button";
 
 export default function ResumeColumn({ initialSectionIds, isEditable }) {
     const [sectionIds, setSectionIds] = useState(initialSectionIds);
@@ -23,9 +23,7 @@ export default function ResumeColumn({ initialSectionIds, isEditable }) {
                     />
                 );
             })}
-            {isEditable && (
-                <AddButton text="Add Section" onAdd={handleAddSection} />
-            )}
+            {isEditable && <Button text="Section" onClick={handleAddSection} />}
         </div>
     );
 }

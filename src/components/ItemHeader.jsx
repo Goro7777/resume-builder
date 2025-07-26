@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { DEFAULT_PERSON, DEFAULT_ITEM_HEADER } from "../defaults";
 import EditableTitle from "./EditableTitle";
-import AddButton from "./AddButton";
+import Button from "./Button";
 import DeleteButton from "./DeleteButton";
+import { DEFAULT_PERSON, DEFAULT_ITEM_HEADER } from "../defaults";
 
 export default function ItemHeader({ itemId, isEditable, isEditing }) {
     let [header, setHeader] = useState(
@@ -25,7 +25,7 @@ export default function ItemHeader({ itemId, isEditable, isEditing }) {
     const handleAddPart = (part) => {
         setHeader((header) => ({
             ...header,
-            [part]: DEFAULT_HEADER[part],
+            [part]: DEFAULT_ITEM_HEADER[part],
         }));
     };
 
@@ -33,24 +33,24 @@ export default function ItemHeader({ itemId, isEditable, isEditing }) {
         <header>
             <div className="mb-2">
                 {isEditable && !header.title && (
-                    <AddButton
-                        classes="py-0 w-25 me-2"
-                        text="Add Title"
-                        onAdd={() => handleAddPart("title")}
+                    <Button
+                        text="Title"
+                        onClick={() => handleAddPart("title")}
+                        classes="py-0 w-25 "
                     />
                 )}
                 {isEditable && !header.time && (
-                    <AddButton
-                        classes="py-0 w-25 me-2"
-                        text="Add Time"
-                        onAdd={() => handleAddPart("time")}
+                    <Button
+                        text="Time"
+                        onClick={() => handleAddPart("time")}
+                        classes="py-0 w-25 "
                     />
                 )}
                 {isEditable && !header.place && (
-                    <AddButton
-                        classes="py-0 w-25"
-                        text="Add Place"
-                        onAdd={() => handleAddPart("place")}
+                    <Button
+                        text="Place"
+                        onClick={() => handleAddPart("place")}
+                        classes="py-0 w-25 "
                     />
                 )}
             </div>
