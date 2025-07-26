@@ -3,11 +3,11 @@ import EditablePar from "./EditablePar";
 import AddButton from "./AddButton";
 import DeleteButton from "./DeleteButton";
 import ItemHeader from "./ItemHeader";
-import { DEFAULT_PERSON } from "../constants";
-
-const DEFAULT_PARAGRAPH =
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
-const DEFAULT_LIST_ITEM = "Lorem ipsum dolor sit amet.";
+import {
+    DEFAULT_PERSON,
+    DEFAULT_LIST_ITEM,
+    DEFAULT_PARAGRAPH,
+} from "../defaults";
 
 export default function ResumeItem({ id, isEditing, isEditable }) {
     const [body, setBody] = useState(DEFAULT_PERSON.items[id]?.info || []);

@@ -1,10 +1,9 @@
 import ResumeHeader from "./ResumeHeader";
-import { GET_DEFAULT_SECTION_IDS } from "../constants";
+import { DEFAULT_PERSON } from "../defaults";
 import ResumeColumn from "./ResumeColumn";
 
-// https://www.bootdey.com/snippets/view/cv-resume
-
-let [LFT_SECTION_IDS, RGT_SECTION_IDS] = GET_DEFAULT_SECTION_IDS();
+const [INITIAL_LFT_SECTION_IDS, INITIAL_RGT_SECTION_IDS] =
+    splitSectionIds(DEFAULT_PERSON);
 
 export default function Resume({ targetRef, isEditable }) {
     return (
@@ -19,11 +18,11 @@ export default function Resume({ targetRef, isEditable }) {
 
                         <div className="row">
                             <ResumeColumn
-                                initialSectionIds={LFT_SECTION_IDS}
+                                initialSectionIds={INITIAL_LFT_SECTION_IDS}
                                 isEditable={isEditable}
                             />
                             <ResumeColumn
-                                initialSectionIds={RGT_SECTION_IDS}
+                                initialSectionIds={INITIAL_RGT_SECTION_IDS}
                                 isEditable={isEditable}
                             />
                         </div>
@@ -32,4 +31,14 @@ export default function Resume({ targetRef, isEditable }) {
             </div>
         </div>
     );
+}
+
+function splitSectionIds(person) {
+    let sections = Object.values(person.sections);
+    let halfIndex = Math.ceil(sections.length / 2);
+
+    let lftIds = sections.slice(0, halfIndex).map((section) => section.id);
+    let rgtIds = sections.slice(halfIndex).map((section) => section.id);
+
+    return [lftIds, rgtIds];
 }

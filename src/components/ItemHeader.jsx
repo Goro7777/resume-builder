@@ -1,14 +1,8 @@
 import { useState } from "react";
-import { DEFAULT_PERSON } from "../constants";
+import { DEFAULT_PERSON, DEFAULT_ITEM_HEADER } from "../defaults";
 import EditableTitle from "./EditableTitle";
 import AddButton from "./AddButton";
 import DeleteButton from "./DeleteButton";
-
-const DEFAULT_HEADER = {
-    title: "Your Title",
-    time: "Your time period",
-    place: "Your location",
-};
 
 export default function ItemHeader({ itemId, isEditable, isEditing }) {
     let [header, setHeader] = useState(
@@ -18,7 +12,7 @@ export default function ItemHeader({ itemId, isEditable, isEditing }) {
                   place: DEFAULT_PERSON.items[itemId].place,
                   time: DEFAULT_PERSON.items[itemId].time,
               }
-            : DEFAULT_HEADER
+            : DEFAULT_ITEM_HEADER
     );
 
     const handleDeletePart = (part) => {

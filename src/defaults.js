@@ -1,20 +1,13 @@
-export const GET_DEFAULT_SECTION_IDS = () => {
-    let sections = Object.values(DEFAULT_PERSON.sections);
-    let halfIndex = Math.ceil(sections.length / 2);
-
-    let lftIds = sections.slice(0, halfIndex).map((section) => section.id);
-    let rgtIds = sections.slice(halfIndex).map((section) => section.id);
-
-    return [lftIds, rgtIds];
+export const DEFAULT_ITEM_HEADER = {
+    title: "Your Title",
+    time: "Your time period",
+    place: "Your location",
 };
 
-export const GET_DEFAULT_ITEM_IDS = (sectionId) => {
-    return DEFAULT_PERSON.sections[sectionId]?.itemIds;
-};
+export const DEFAULT_PARAGRAPH =
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
 
-export const GET_DEFAULT_ITEMS = () => {
-    return DEFAULT_PERSON.items;
-};
+export const DEFAULT_LIST_ITEM = "Lorem ipsum dolor sit amet.";
 
 export const DEFAULT_PERSON = {
     fullName: "Alice Barkley",

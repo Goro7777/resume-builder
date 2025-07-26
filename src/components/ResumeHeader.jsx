@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { DEFAULT_PERSON } from "../constants";
+import { DEFAULT_PERSON } from "../defaults";
 import EditableTitle from "./EditableTitle";
 import EditablePar from "./EditablePar";
 import ControlButtons from "./ControlButtons";

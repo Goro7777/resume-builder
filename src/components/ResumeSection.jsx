@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { DEFAULT_PERSON, GET_DEFAULT_ITEM_IDS } from "../constants";
+import { DEFAULT_PERSON } from "../defaults";
 import EditableTitle from "./EditableTitle";
 import ResumeItem from "./ResumeItem";
 import ControlButtons from "./ControlButtons";
@@ -8,7 +8,7 @@ import AddButton from "./AddButton";
 export default function ResumeSection({ id, isEditable, onDelete }) {
     const [isEditing, setIsEditing] = useState(false);
     const [itemIds, setItemIds] = useState(
-        () => GET_DEFAULT_ITEM_IDS(id) || [crypto.randomUUID()]
+        DEFAULT_PERSON.sections[id]?.itemIds || [crypto.randomUUID()]
     );
 
     if (!isEditable && isEditing) {
