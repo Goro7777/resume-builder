@@ -19,6 +19,9 @@ export default function ResumeSection({ id, isEditable, onDelete }) {
     const handleAddItem = () =>
         setItemIds((ids) => [...ids, crypto.randomUUID()]);
 
+    const handleDeleteItem = (delId) =>
+        setItemIds((ids) => ids.filter((id) => id !== delId));
+
     return (
         <section className="resume-section position-relative">
             {isEditable && (
@@ -43,6 +46,7 @@ export default function ResumeSection({ id, isEditable, onDelete }) {
                     id={id}
                     isEditing={isEditing}
                     isEditable={isEditable}
+                    onDelete={() => handleDeleteItem(id)}
                 />
             ))}
             {isEditable && (

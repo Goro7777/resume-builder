@@ -9,7 +9,7 @@ import {
     DEFAULT_PARAGRAPH,
 } from "../defaults";
 
-export default function ResumeItem({ id, isEditing, isEditable }) {
+export default function ResumeItem({ id, isEditing, isEditable, onDelete }) {
     const [body, setBody] = useState(DEFAULT_PERSON.items[id]?.info || []);
 
     const handleAddBodyPart = (type = "paragraph") => {
@@ -143,6 +143,15 @@ export default function ResumeItem({ id, isEditing, isEditable }) {
 
     return (
         <div className="resume-item">
+            {isEditable && (
+                <button
+                    type="button"
+                    className="w-50 btn btn-sm btn-outline-danger  "
+                    onClick={onDelete}
+                >
+                    <i className="bi bi-plus"></i> Delete Item
+                </button>
+            )}
             <ItemHeader
                 isEditable={isEditable}
                 isEditing={isEditing}
