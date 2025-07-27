@@ -151,7 +151,7 @@ export default function ResumeItem({ id, isEditing, isEditable, onDelete }) {
                     text="Item"
                     type="delete"
                     onClick={onDelete}
-                    classes="w-50"
+                    classes="w-25"
                 />
             )}
             <ResumeItemHeader

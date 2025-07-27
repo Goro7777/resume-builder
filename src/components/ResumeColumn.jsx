@@ -23,7 +23,13 @@ export default function ResumeColumn({ initialSectionIds, isEditable }) {
                     />
                 );
             })}
-            {isEditable && <Button text="Section" onClick={handleAddSection} />}
+            {isEditable && (
+                <Button
+                    text="Section"
+                    classes="w-25"
+                    onClick={handleAddSection}
+                />
+            )}
         </div>
     );
 }

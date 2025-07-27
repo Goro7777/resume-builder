@@ -54,7 +54,7 @@ export default function ResumeSection({ id, isEditable, onDelete }) {
                     <Button
                         text="Item"
                         onClick={handleAddItem}
-                        classes="w-50"
+                        classes="w-25"
                     />
                 </div>
             )}
