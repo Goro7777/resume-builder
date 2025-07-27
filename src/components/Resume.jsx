@@ -7,28 +7,26 @@ const [INITIAL_LFT_SECTION_IDS, INITIAL_RGT_SECTION_IDS] =
 
 export default function Resume({ contentRef, isEditable }) {
     return (
-        <div className="p-5 mt-5">
-            <div className="border border-2">
-                <section ref={contentRef} id="resume" className="resume p-4">
-                    <div
-                        className="container aos-init aos-animate"
-                        data-aos="fade-up"
-                    >
-                        <ResumeHeader isEditable={isEditable} />
+        <div className="mt-5">
+            <section ref={contentRef} id="resume" className="resume p-4">
+                <div
+                    className="container aos-init aos-animate"
+                    data-aos="fade-up"
+                >
+                    <ResumeHeader isEditable={isEditable} />
 
-                        <div className="row">
-                            <ResumeColumn
-                                initialSectionIds={INITIAL_LFT_SECTION_IDS}
-                                isEditable={isEditable}
-                            />
-                            <ResumeColumn
-                                initialSectionIds={INITIAL_RGT_SECTION_IDS}
-                                isEditable={isEditable}
-                            />
-                        </div>
+                    <div className="row">
+                        <ResumeColumn
+                            initialSectionIds={INITIAL_LFT_SECTION_IDS}
+                            isEditable={isEditable}
+                        />
+                        <ResumeColumn
+                            initialSectionIds={INITIAL_RGT_SECTION_IDS}
+                            isEditable={isEditable}
+                        />
                     </div>
-                </section>
-            </div>
+                </div>
+            </section>
         </div>
     );
 }

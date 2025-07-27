@@ -3,6 +3,7 @@ body {
 }
 
 .resume .resume-title {
+    break-after: avoid;
     font-size: 26px;
     font-weight: 400;
     margin-top: 16px;
@@ -11,6 +12,8 @@ body {
 }
 
 .resume .resume-item {
+    break-inside: avoid-page; /* Modern standard */
+    page-break-inside: avoid; /* Fallback for older browsers */
     padding: 0 0 30px 20px;
     margin-top: -2px;
     border-left: 2px solid #34b7a7;
@@ -78,4 +81,13 @@ body {
 .resume .resume-section textarea:focus {
     outline: none;
     border-color: rgb(13, 202, 240);
+}
+
+@page {
+    size: auto;
+    margin: 20mm;
+}
+
+@page :first {
+    margin: 0; /* Different margin for the first page */
 }

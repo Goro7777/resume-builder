@@ -13,7 +13,7 @@ export default function ResumeHeader({ isEditable }) {
     }
 
     return (
-        <div className="resume-section section-title p-2 w-75 mx-auto position-relative">
+        <div className="resume-section section-title p-3 w-75 mx-auto position-relative">
             {isEditable && (
                 <ResumeSectionControls
                     isEditing={isEditing}

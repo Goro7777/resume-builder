@@ -49,6 +49,10 @@ export const DEFAULT_PERSON = {
                     id: 1,
                     data: "Quia nobis sequi est occaecati aut. Repudiandae et iusto quae reiciendis et quis Eius vel ratione eius unde vitae rerum voluptates asperiores voluptatem Earum molestiae consequatur neque etlon sader mart dila",
                 },
+                {
+                    id: 2,
+                    data: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis, quidem hic quibusdam enim adipisci at facere, ratione nam ullam quisquam natus eligendi! Facilis est nostrum consequatur sunt obcaecati nulla libero.",
+                },
             ],
         },
         4: {
@@ -77,7 +81,7 @@ export const DEFAULT_PERSON = {
                 {
                     id: 1,
                     data: [
-                        "Developed numerous marketing programs (logos, brochures,infographics, presentations, and advertisements).",
+                        "Developed numerous marketing programs (logos, brochures, infographics, presentations, and advertisements).",
                         "Managed up to 5 projects or tasks at a given time while under pressure",
                         "Recommended and consulted with clients on the most appropriate graphic design",
                         "Created 4+ design presentations and proposals a month for clients and account managers",
