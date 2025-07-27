@@ -1,21 +1,22 @@
-import { useState } from "react";
-import { usePDF } from "react-to-pdf";
+import { useState, useRef } from "react";
+import { useReactToPrint } from "react-to-print";
 import Resume from "./components/Resume";
 import Header from "./components/Header";
 import "./App.css";
 
 function App() {
     const [isEditing, setIsEditing] = useState(false);
-    const { toPDF, targetRef } = usePDF({ filename: "page.pdf" });
+    const contentRef = useRef(null);
+    const reactToPrintFn = useReactToPrint({ contentRef });
 
     return (
         <>
             <Header
-                onDownload={toPDF}
+                onDownload={reactToPrintFn}
                 onToggleEdit={() => setIsEditing(!isEditing)}
                 isEditing={isEditing}
             />
-            <Resume targetRef={targetRef} isEditable={isEditing} />
+            <Resume contentRef={contentRef} isEditable={isEditing} />
         </>
     );
 }

@@ -5,11 +5,11 @@ import ResumeColumn from "./ResumeColumn";
 const [INITIAL_LFT_SECTION_IDS, INITIAL_RGT_SECTION_IDS] =
     splitSectionIds(DEFAULT_PERSON);
 
-export default function Resume({ targetRef, isEditable }) {
+export default function Resume({ contentRef, isEditable }) {
     return (
         <div className="p-5 mt-5">
             <div className="border border-2">
-                <section ref={targetRef} id="resume" className="resume p-4">
+                <section ref={contentRef} id="resume" className="resume p-4">
                     <div
                         className="container aos-init aos-animate"
                         data-aos="fade-up"

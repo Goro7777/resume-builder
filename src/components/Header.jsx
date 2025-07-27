@@ -17,7 +17,7 @@ export default function Header({ onDownload, isEditing, onToggleEdit }) {
                     onClick={onDownload}
                     disabled={isEditing}
                 >
-                    <i className="bi bi-download"></i> Download PDF
+                    <i className="bi bi-printer"></i> Print
                 </button>
             </div>
         </nav>
