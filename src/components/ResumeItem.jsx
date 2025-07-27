@@ -1,7 +1,7 @@
 import { useState } from "react";
 import EditablePar from "./EditablePar";
 import Button from "./Button";
-import ItemHeader from "./ItemHeader";
+import ResumeItemHeader from "./ResumeItemHeader";
 import {
     DEFAULT_PERSON,
     DEFAULT_LIST_ITEM,
@@ -154,7 +154,7 @@ export default function ResumeItem({ id, isEditing, isEditable, onDelete }) {
                     classes="w-50"
                 />
             )}
-            <ItemHeader
+            <ResumeItemHeader
                 isEditable={isEditable}
                 isEditing={isEditing}
                 itemId={id}

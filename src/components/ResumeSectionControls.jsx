@@ -1,4 +1,4 @@
-export default function ControlButtons({ isEditing, onEdit, onDelete }) {
+export default function ResumeSectionControls({ isEditing, onEdit, onDelete }) {
     return (
         <div className="position-absolute end-0 ">
             {onDelete && (

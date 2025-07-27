@@ -2,7 +2,7 @@ import { useState } from "react";
 import { DEFAULT_PERSON } from "../defaults";
 import EditableTitle from "./EditableTitle";
 import ResumeItem from "./ResumeItem";
-import ControlButtons from "./ControlButtons";
+import ResumeSectionControls from "./ResumeSectionControls";
 import Button from "./Button";
 
 export default function ResumeSection({ id, isEditable, onDelete }) {
@@ -25,7 +25,7 @@ export default function ResumeSection({ id, isEditable, onDelete }) {
     return (
         <section className="resume-section position-relative">
             {isEditable && (
-                <ControlButtons
+                <ResumeSectionControls
                     isEditing={isEditing}
                     onEdit={() => setIsEditing(!isEditing)}
                     onDelete={onDelete}

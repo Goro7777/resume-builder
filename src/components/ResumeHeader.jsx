@@ -2,7 +2,7 @@ import { useState } from "react";
 import { DEFAULT_PERSON } from "../defaults";
 import EditableTitle from "./EditableTitle";
 import EditablePar from "./EditablePar";
-import ControlButtons from "./ControlButtons";
+import ResumeSectionControls from "./ResumeSectionControls";
 
 export default function ResumeHeader({ isEditable }) {
     const [isEditing, setIsEditing] = useState(false);
@@ -15,7 +15,7 @@ export default function ResumeHeader({ isEditable }) {
     return (
         <div className="resume-section section-title p-2 w-75 mx-auto position-relative">
             {isEditable && (
-                <ControlButtons
+                <ResumeSectionControls
                     isEditing={isEditing}
                     onEdit={() => setIsEditing(!isEditing)}
                 />
