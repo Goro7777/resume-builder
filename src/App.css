@@ -12,8 +12,6 @@ body {
 }
 
 .resume .resume-item {
-    break-inside: avoid-page; /* Modern standard */
-    page-break-inside: avoid; /* Fallback for older browsers */
     padding: 0 0 30px 20px;
     margin-top: -2px;
     border-left: 2px solid #34b7a7;
@@ -21,6 +19,8 @@ body {
 }
 
 .resume .resume-item header {
+    break-inside: avoid-page;
+    page-break-inside: avoid;
     margin-bottom: 12px;
 }
 
@@ -85,9 +85,10 @@ body {
 
 @page {
     size: auto;
-    margin: 20mm;
+    margin-top: 20mm;
+    padding-bottom: 5mm;
 }
 
 @page :first {
-    margin: 0; /* Different margin for the first page */
+    margin: 0;
 }

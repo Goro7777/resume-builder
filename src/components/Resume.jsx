@@ -1,6 +1,6 @@
 import ResumeHeader from "./ResumeHeader";
-import { DEFAULT_PERSON } from "../defaults";
 import ResumeColumn from "./ResumeColumn";
+import { DEFAULT_PERSON } from "../defaults";
 
 const [INITIAL_LFT_SECTION_IDS, INITIAL_RGT_SECTION_IDS] =
     splitSectionIds(DEFAULT_PERSON);

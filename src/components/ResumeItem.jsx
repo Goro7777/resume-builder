@@ -76,7 +76,7 @@ export default function ResumeItem({ id, isEditing, isEditable, onDelete }) {
         if (isList) {
             return (
                 <div key={part.id}>
-                    <ul>
+                    <ul className="mb-0">
                         {part.data.map((listItem) => {
                             let initialValue = DEFAULT_PERSON.items[id]?.info
                                 .find((infoPart) => infoPart.id === part.id)

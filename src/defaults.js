@@ -1,5 +1,5 @@
 export const DEFAULT_ITEM_HEADER = {
-    title: "Your Title",
+    title: "Your title",
     time: "Your time period",
     place: "Your location",
 };
